@@ -29,21 +29,21 @@ public final class Controller {
                     Prestamo prestamo = (Prestamo) cliente.receive();
                     EstudioPrestamo estudio = calcularPrestamo(prestamo);
                     cliente.send(estudio);
+                    cliente.close();
                 }
                 this.server.closeServerSocket();
             } catch (IOException | ClassNotFoundException ex) {
                 Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-                try {
-                    this.server.closeServerSocket();
-                } catch (IOException ex1) {
-                    Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex1);
-                }
             }
         }).start();
     }
     
     public EstudioPrestamo calcularPrestamo(Prestamo prestamo){
-        return new EstudioPrestamo(prestamo, 0, 0, 0);
+        double valorInteresMensual = Math.round(prestamo.getValorPrestamo()*(prestamo.getInteresAnual()/12/100));
+        double valorCuota = Math.round((prestamo.getValorPrestamo()/prestamo.getNumeroCuotas())+valorInteresMensual);
+        double valorTotalPagar = prestamo.getValorPrestamo()+(valorInteresMensual*6);
+        
+        return new EstudioPrestamo(prestamo, valorCuota, valorInteresMensual, valorTotalPagar);
     }
 
     public void stopServerSocket(){

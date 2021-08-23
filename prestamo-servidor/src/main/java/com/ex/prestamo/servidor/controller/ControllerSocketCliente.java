@@ -25,6 +25,8 @@ public class ControllerSocketCliente {
     }
     
     public void close() throws IOException{
+        this.ois.close();
+        this.oos.close();
         this.socket.close();
     }
 }
