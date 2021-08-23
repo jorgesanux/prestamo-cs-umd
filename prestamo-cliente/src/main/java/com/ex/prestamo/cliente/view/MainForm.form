@@ -85,7 +85,7 @@
               <Font name="Tahoma" size="18" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Prestamo v1.0"/>
+            <Property name="text" type="java.lang.String" value="Cliente Prestamos v1.0"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JPanel" name="panelFields">

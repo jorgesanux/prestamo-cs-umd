@@ -37,7 +37,7 @@ public class MainForm extends javax.swing.JFrame {
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitle.setText("Prestamo v1.0");
+        lblTitle.setText("Cliente Prestamos v1.0");
 
         panelFields.setMinimumSize(new java.awt.Dimension(300, 145));
         panelFields.setLayout(new java.awt.GridLayout(5, 2, 0, 10));
