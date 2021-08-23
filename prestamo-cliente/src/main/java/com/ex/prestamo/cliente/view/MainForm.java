@@ -1,7 +1,11 @@
 package com.ex.prestamo.cliente.view;
 
+import com.ex.prestamo.cliente.controller.Controller;
+
 public class MainForm extends javax.swing.JFrame {
+    private Controller controller;
     public MainForm() {
+        this.controller = new Controller();
         initComponents();
     }
 
@@ -15,7 +19,7 @@ public class MainForm extends javax.swing.JFrame {
         lblNombre = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         lblSueldo = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtSueldo = new javax.swing.JTextField();
         lblValorPrestamo = new javax.swing.JLabel();
         txtValorPrestamo = new javax.swing.JTextField();
         lblNumeroCuotas = new javax.swing.JLabel();
@@ -49,8 +53,8 @@ public class MainForm extends javax.swing.JFrame {
         lblSueldo.setText("Sueldo");
         panelFields.add(lblSueldo);
 
-        jTextField2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        panelFields.add(jTextField2);
+        txtSueldo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        panelFields.add(txtSueldo);
 
         lblValorPrestamo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblValorPrestamo.setText("Valor del préstamo");
@@ -80,11 +84,21 @@ public class MainForm extends javax.swing.JFrame {
         btnCalcular.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         btnCalcular.setForeground(new java.awt.Color(0, 153, 0));
         btnCalcular.setText("Calcular");
+        btnCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCalcularActionPerformed(evt);
+            }
+        });
         panelButtons.add(btnCalcular);
 
         btnLimpiar.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         btnLimpiar.setForeground(new java.awt.Color(153, 0, 0));
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
         panelButtons.add(btnLimpiar);
 
         javax.swing.GroupLayout panelMainLayout = new javax.swing.GroupLayout(panelMain);
@@ -135,6 +149,24 @@ public class MainForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
+        this.controller.calcularPrestamo(
+            this.txtNombre.getText(),
+            Double.parseDouble(this.txtSueldo.getText()),
+            Double.parseDouble(this.txtValorPrestamo.getText()),
+            Integer.parseInt(this.txtNumeroCuotas.getText()),
+            Float.parseFloat(this.txtInteresAnual.getText())
+        );
+    }//GEN-LAST:event_btnCalcularActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        this.txtNombre.setText(null);
+        this.txtSueldo.setText(null);
+        this.txtValorPrestamo.setText(null);
+        this.txtNumeroCuotas.setText(null);
+        this.txtInteresAnual.setText(null);
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
     public static void open() {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -162,7 +194,6 @@ public class MainForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalcular;
     private javax.swing.JButton btnLimpiar;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lblInteresAnual;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblNumeroCuotas;
@@ -176,6 +207,7 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JTextField txtInteresAnual;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNumeroCuotas;
+    private javax.swing.JTextField txtSueldo;
     private javax.swing.JTextField txtValorPrestamo;
     // End of variables declaration//GEN-END:variables
 }
