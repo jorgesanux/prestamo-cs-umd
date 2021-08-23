@@ -6,8 +6,8 @@ public class MainForm extends javax.swing.JFrame {
     private Controller controller;
     
     public MainForm() {
-        this.controller = new Controller();
         initComponents();
+        this.controller = new Controller(taLog);
     }
     
     @SuppressWarnings("unchecked")
@@ -32,8 +32,8 @@ public class MainForm extends javax.swing.JFrame {
 
         taLog.setEditable(false);
         taLog.setColumns(20);
-        taLog.setLineWrap(true);
         taLog.setRows(5);
+        taLog.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         scrollPane.setViewportView(taLog);
 
         javax.swing.GroupLayout panelLogLayout = new javax.swing.GroupLayout(panelLog);
@@ -81,7 +81,7 @@ public class MainForm extends javax.swing.JFrame {
             panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMainLayout.createSequentialGroup()
                 .addGap(122, 122, 122)
-                .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
                 .addGap(113, 113, 113))
             .addGroup(panelMainLayout.createSequentialGroup()
                 .addContainerGap()
@@ -132,10 +132,11 @@ public class MainForm extends javax.swing.JFrame {
 
     private void btnPararServerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPararServerActionPerformed
         this.controller.stopServerSocket();
+        System.exit(0);
     }//GEN-LAST:event_btnPararServerActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        // TODO add your handling code here:
+        this.taLog.setText(null);
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     public static void open() {

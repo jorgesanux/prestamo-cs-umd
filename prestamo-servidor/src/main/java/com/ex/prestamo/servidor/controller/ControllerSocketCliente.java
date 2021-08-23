@@ -29,4 +29,8 @@ public class ControllerSocketCliente {
         this.oos.close();
         this.socket.close();
     }
+    
+    public String getInfo(){
+        return this.socket.getLocalSocketAddress()+":"+this.socket.getPort();
+    }
 }
