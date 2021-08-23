@@ -1,7 +1,7 @@
 package com.ex.prestamo.cliente.controller;
 
-import com.ex.prestamo.cliente.model.EstudioPrestamo;
-import com.ex.prestamo.cliente.model.Prestamo;
+import com.ex.prestamo.model.EstudioPrestamo;
+import com.ex.prestamo.model.Prestamo;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
