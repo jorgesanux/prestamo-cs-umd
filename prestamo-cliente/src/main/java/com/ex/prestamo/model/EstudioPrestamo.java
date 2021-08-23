@@ -1,7 +1,12 @@
 package com.ex.prestamo.model;
 
 import java.io.Serializable;
-
+/**
+ * Se crea en un paquete de modelo aparte por temas de la serializacion
+ * cuando se envia al servidor, ya que las clases deben tener exactamente
+ * la misma ruta de paquete y nombre de clase
+ * @author EX
+ */
 public class EstudioPrestamo implements Serializable{
     private static final long serialVersionUID = 654987321654987322L;
     
