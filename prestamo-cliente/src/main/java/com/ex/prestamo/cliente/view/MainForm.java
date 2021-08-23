@@ -9,17 +9,127 @@ public class MainForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelMain = new javax.swing.JPanel();
+        lblTitle = new javax.swing.JLabel();
+        panelFields = new javax.swing.JPanel();
+        lblNombre = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        lblSueldo = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        lblValorPrestamo = new javax.swing.JLabel();
+        txtValorPrestamo = new javax.swing.JTextField();
+        lblNumeroCuotas = new javax.swing.JLabel();
+        txtNumeroCuotas = new javax.swing.JTextField();
+        lblInteresAnual = new javax.swing.JLabel();
+        txtInteresAnual = new javax.swing.JTextField();
+        separator = new javax.swing.JSeparator();
+        panelButtons = new javax.swing.JPanel();
+        btnCalcular = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Simulador de prestamo v1.0");
+        setResizable(false);
+
+        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle.setText("Prestamo v1.0");
+
+        panelFields.setMinimumSize(new java.awt.Dimension(300, 145));
+        panelFields.setLayout(new java.awt.GridLayout(5, 2, 0, 10));
+
+        lblNombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblNombre.setText("Nombre");
+        panelFields.add(lblNombre);
+
+        txtNombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        panelFields.add(txtNombre);
+
+        lblSueldo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblSueldo.setText("Sueldo");
+        panelFields.add(lblSueldo);
+
+        jTextField2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        panelFields.add(jTextField2);
+
+        lblValorPrestamo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblValorPrestamo.setText("Valor del préstamo");
+        panelFields.add(lblValorPrestamo);
+
+        txtValorPrestamo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        panelFields.add(txtValorPrestamo);
+
+        lblNumeroCuotas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblNumeroCuotas.setText("Número de cuotas (Meses)");
+        panelFields.add(lblNumeroCuotas);
+
+        txtNumeroCuotas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        panelFields.add(txtNumeroCuotas);
+
+        lblInteresAnual.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblInteresAnual.setText("Interes anual");
+        panelFields.add(lblInteresAnual);
+
+        txtInteresAnual.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        panelFields.add(txtInteresAnual);
+
+        separator.setToolTipText("");
+
+        panelButtons.setLayout(new javax.swing.BoxLayout(panelButtons, javax.swing.BoxLayout.LINE_AXIS));
+
+        btnCalcular.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        btnCalcular.setForeground(new java.awt.Color(0, 153, 0));
+        btnCalcular.setText("Calcular");
+        panelButtons.add(btnCalcular);
+
+        btnLimpiar.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        btnLimpiar.setForeground(new java.awt.Color(153, 0, 0));
+        btnLimpiar.setText("Limpiar");
+        panelButtons.add(btnLimpiar);
+
+        javax.swing.GroupLayout panelMainLayout = new javax.swing.GroupLayout(panelMain);
+        panelMain.setLayout(panelMainLayout);
+        panelMainLayout.setHorizontalGroup(
+            panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMainLayout.createSequentialGroup()
+                .addGap(172, 172, 172)
+                .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(174, 174, 174))
+            .addGroup(panelMainLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelFields, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addComponent(separator)
+            .addGroup(panelMainLayout.createSequentialGroup()
+                .addComponent(panelButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        panelMainLayout.setVerticalGroup(
+            panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMainLayout.createSequentialGroup()
+                .addComponent(lblTitle)
+                .addGap(18, 18, 18)
+                .addComponent(panelFields, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(separator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelButtons, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -50,5 +160,22 @@ public class MainForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCalcular;
+    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel lblInteresAnual;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblNumeroCuotas;
+    private javax.swing.JLabel lblSueldo;
+    private javax.swing.JLabel lblTitle;
+    private javax.swing.JLabel lblValorPrestamo;
+    private javax.swing.JPanel panelButtons;
+    private javax.swing.JPanel panelFields;
+    private javax.swing.JPanel panelMain;
+    private javax.swing.JSeparator separator;
+    private javax.swing.JTextField txtInteresAnual;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtNumeroCuotas;
+    private javax.swing.JTextField txtValorPrestamo;
     // End of variables declaration//GEN-END:variables
 }
