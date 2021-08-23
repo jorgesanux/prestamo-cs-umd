@@ -1,6 +1,10 @@
-package com.ex.prestamo.cliente.model;
+package com.ex.prestamo.model;
 
-public class EstudioPrestamo {
+import java.io.Serializable;
+
+public class EstudioPrestamo implements Serializable{
+    private static final long serialVersionUID = 654987321654987322L;
+    
     private Prestamo prestamo;
     private double valorCuota;
     private double valorInteresMensual;

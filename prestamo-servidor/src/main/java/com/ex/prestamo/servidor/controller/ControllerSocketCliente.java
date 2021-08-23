@@ -1,18 +1,17 @@
-package com.ex.prestamo.cliente.controller;
+package com.ex.prestamo.servidor.controller;
 
-import com.ex.prestamo.cliente.model.Constant;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-public class ControllerSocket {
+public class ControllerSocketCliente {
     private final Socket socket;
     private final ObjectInputStream ois;
     private final ObjectOutputStream oos;
     
-    public ControllerSocket() throws IOException{
-        this.socket = new Socket(Constant.HOST,Constant.PORT);
+    public ControllerSocketCliente(Socket socket) throws IOException{
+        this.socket = socket;
         this.oos = new ObjectOutputStream(this.socket.getOutputStream());
         this.ois = new ObjectInputStream(this.socket.getInputStream());
     }

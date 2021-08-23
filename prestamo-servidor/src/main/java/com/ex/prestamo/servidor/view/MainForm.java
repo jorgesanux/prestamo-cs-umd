@@ -1,8 +1,12 @@
 package com.ex.prestamo.servidor.view;
 
-public class MainForm extends javax.swing.JFrame {
+import com.ex.prestamo.servidor.controller.Controller;
 
+public class MainForm extends javax.swing.JFrame {
+    private Controller controller;
+    
     public MainForm() {
+        this.controller = new Controller();
         initComponents();
     }
     
@@ -54,11 +58,21 @@ public class MainForm extends javax.swing.JFrame {
         btnPararServer.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnPararServer.setForeground(new java.awt.Color(153, 0, 0));
         btnPararServer.setText("Detener servidor");
+        btnPararServer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPararServerActionPerformed(evt);
+            }
+        });
         panelButtons.add(btnPararServer);
 
         btnLimpiar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnLimpiar.setForeground(new java.awt.Color(51, 51, 255));
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
         panelButtons.add(btnLimpiar);
 
         javax.swing.GroupLayout panelMainLayout = new javax.swing.GroupLayout(panelMain);
@@ -115,6 +129,14 @@ public class MainForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnPararServerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPararServerActionPerformed
+        this.controller.stopServerSocket();
+    }//GEN-LAST:event_btnPararServerActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
     public static void open() {
         try {

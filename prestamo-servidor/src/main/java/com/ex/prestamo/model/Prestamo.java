@@ -1,8 +1,10 @@
-package com.ex.prestamo.cliente.model;
+package com.ex.prestamo.model;
 
 import java.io.Serializable;
 
 public class Prestamo implements Serializable{
+    private static final long serialVersionUID = 654987321654987321L;
+    
     private String nombre;
     private double sueldo;
     private double valorPrestamo;
