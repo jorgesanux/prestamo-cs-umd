@@ -1,6 +1,7 @@
 package com.ex.prestamo.cliente.view;
 
 import com.ex.prestamo.cliente.controller.Controller;
+import javax.swing.JOptionPane;
 
 public class MainForm extends javax.swing.JFrame {
     private Controller controller;
@@ -150,13 +151,21 @@ public class MainForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
-        this.controller.calcularPrestamo(
-            this.txtNombre.getText(),
-            Double.parseDouble(this.txtSueldo.getText()),
-            Double.parseDouble(this.txtValorPrestamo.getText()),
-            Integer.parseInt(this.txtNumeroCuotas.getText()),
-            Float.parseFloat(this.txtInteresAnual.getText())
-        );
+        try{
+            if(validateFields()){
+                this.controller.calcularPrestamo(
+                    this.txtNombre.getText(),
+                    Double.parseDouble(this.txtSueldo.getText()),
+                    Double.parseDouble(this.txtValorPrestamo.getText()),
+                    Integer.parseInt(this.txtNumeroCuotas.getText()),
+                    Float.parseFloat(this.txtInteresAnual.getText())
+                );
+            }else{
+                throw new NoSuchFieldException("Rellene todos los campos");
+            }
+        }catch(NumberFormatException | NoSuchFieldException ex){
+            JOptionPane.showMessageDialog(null,ex.getLocalizedMessage(),"Error",JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnCalcularActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
@@ -167,6 +176,22 @@ public class MainForm extends javax.swing.JFrame {
         this.txtInteresAnual.setText(null);
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
+    public boolean validateFields(){
+        String[] texts = {this.txtNombre.getText(),
+        this.txtSueldo.getText(),
+        this.txtValorPrestamo.getText(),
+        this.txtNumeroCuotas.getText(),
+        this.txtInteresAnual.getText()};
+        boolean valid = true;
+        for(String text : texts){
+            if(text.isEmpty()){
+                valid = false;
+                break;
+            }
+        }
+        return valid;
+    }
+    
     public static void open() {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
