@@ -20,6 +20,7 @@ public final class Controller {
             this.server = new ControllerSocketServer();
             listenerConnections();
         } catch (IOException ex) {
+            printLog(String.format("Ocurrio un error: %s", ex.getLocalizedMessage()), 2);
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -30,18 +31,26 @@ public final class Controller {
                 while(!this.stopServer){
                     printLog("Esperando una conexion...",1);
                     ControllerSocketCliente cliente = this.server.accept();
-                    printLog(String.format("Cliente %s conectado", cliente.getInfo()),1);
-                    printLog("Recibiendo datos del prestamo...", 1);
-                    Prestamo prestamo = (Prestamo) cliente.receive();
-                    printLog("Haciendo el estudio del prestamo...", 1);
-                    EstudioPrestamo estudio = calcularPrestamo(prestamo);
-                    printLog("Enviando estudio de prestamo...", 1);
-                    cliente.send(estudio);
-                    printLog(String.format("Cerrando conexion con el cliente %s", cliente.getInfo()), 1);
-                    cliente.close();
+                    new Thread(()->{
+                        try {
+                            printLog(String.format("Cliente %s conectado", cliente.getInfo()),1);
+                            printLog("Recibiendo datos del prestamo...", 1);
+                            Prestamo prestamo = (Prestamo) cliente.receive();
+                            printLog("Haciendo el estudio del prestamo...", 1);
+                            EstudioPrestamo estudio = calcularPrestamo(prestamo);
+                            printLog("Enviando estudio de prestamo...", 1);
+                            cliente.send(estudio);
+                            printLog(String.format("Cerrando conexion con el cliente %s", cliente.getInfo()), 1);
+                            cliente.close();
+                        } catch (IOException | ClassNotFoundException ex) {
+                            printLog(String.format("Ocurrio un error: %s", ex.getLocalizedMessage()), 2);
+                            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }).start();
                 }
                 this.server.closeServerSocket();
-            } catch (IOException | ClassNotFoundException ex) {
+            } catch (IOException ex) {
+                printLog(String.format("Ocurrio un error: %s", ex.getLocalizedMessage()), 2);
                 Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
         }).start();
